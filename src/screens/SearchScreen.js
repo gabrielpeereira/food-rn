@@ -5,7 +5,9 @@ import yelp from '../api/yelp';
 import useResults from '../hooks/useResults';
 import ResultsList from '../components/ResultsList';
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }) => {
+
+
   const [term, setTerm] = useState('');
   const [searchApi, results, errorMessage] = useResults('')
 
@@ -24,9 +26,21 @@ const SearchScreen = () => {
       onTermSubmit={() => searchApi(term)}  
       />
       <ScrollView>
-        <ResultsList results={filterResultsbyPrice('$')} title="Cost Pricier"/>
-        <ResultsList results={filterResultsbyPrice('$$')} title="Bit Pricier"/>
-        <ResultsList results={filterResultsbyPrice('$$$')} title="Big Spender"/>
+        <ResultsList 
+          results={filterResultsbyPrice('$')} 
+          title="Cost Pricier"
+           
+          />
+        <ResultsList 
+          results={filterResultsbyPrice('$$')} 
+          title="Bit Pricier"
+           
+          />
+        <ResultsList 
+          results={filterResultsbyPrice('$$$')} 
+          title="Big Spender"
+           
+          />
       </ScrollView>
     </>
   );
